@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Models\Progetto;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,14 +18,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Route::get('/dashboard', function () {
     $userId = Auth::id(); 
     $progetti = Progetto::where('user_id', $userId)->get(); 
-    return view('dashboard', ['userId' => $userId], ['progetti' => $progetti]); 
+    $role_id = auth()->user()->role_id;
 
+    if ($role_id != 1) {
+        return view('dashboard', ['userId' => $userId, 'progetti' => $progetti]); 
+    } else {
+        $users = User::all();
+        return view('dashboardadmin', ['userId' => $userId, 'users' => $users]); 
+    }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

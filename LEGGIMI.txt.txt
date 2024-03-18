@@ -1,0 +1,4 @@
+Per popolare il database: prima il seeder per i RUOLI, poi quello per le ATTIVITÀ.
+
+Per avere l'utente Admin e visionare la dashboard dedicata con tutti gli utenti: 
+il seeder degli USER

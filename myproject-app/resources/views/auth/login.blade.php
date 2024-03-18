@@ -44,4 +44,8 @@
             </x-primary-button>
         </div>
     </form>
+    <div class="text-right my-5">
+        <p>Not a member yet?</p>
+        <button class="px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase"><a href="/register">Register</a></button>
+    </div>
 </x-guest-layout>
